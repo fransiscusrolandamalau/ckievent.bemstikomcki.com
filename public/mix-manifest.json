@@ -1,0 +1,11 @@
+{
+    "/admin/css/admin.css": "/admin/css/admin.css",
+    "/admin/css/vendor.css": "/admin/css/vendor.css",
+    "/admin/js/admin.js": "/admin/js/admin.js",
+    "/admin/js/vendor.js": "/admin/js/vendor.js",
+    "/landing/css/vendor.css": "/landing/css/vendor.css",
+    "/landing/css/landing.css": "/landing/css/landing.css",
+    "/landing/css/color.css": "/landing/css/color.css",
+    "/landing/js/vendor.js": "/landing/js/vendor.js",
+    "/landing/js/landing.js": "/landing/js/landing.js"
+}
