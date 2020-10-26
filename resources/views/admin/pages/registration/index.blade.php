@@ -71,7 +71,7 @@
                                         <td><img src="{{ URL::to('/') }}/payment_upload/{{ $registration->payment_upload }}" width="50"></td>
                                         <td>{{ $registration->created_at }}</td>
                                         <td>
-                                            
+
                                             <a class="btn btn-info btn-sm " href="{{ route('registrations.show', $registration->id) }}"><i class="fa fa-eye"></i></a>
                                             <a class="btn btn-primary btn-sm " href="{{ route('registrations.edit', $registration->id) }}"><i class="fas fa-user-edit"></i></a>
                                             {!! Form::open(array(
@@ -81,7 +81,7 @@
                                                 'route' => ['registrations.destroy', $registration->id])) !!}
                                                 {!! Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-sm']) !!}
                                             {!! Form::close() !!}
-                                            
+
                                         </td>
                                     @elseif(Auth::user()->hasRole('Super Admin'))
                                         <td>{{ ++$key }}</td>
@@ -105,7 +105,7 @@
                                         <td><img src="{{ URL::to('/') }}/payment_upload/{{ $registration->payment_upload }}" width="50"></td>
                                         <td>{{ $registration->created_at }}</td>
                                         <td>
-                                            
+
                                             <a class="btn btn-info btn-sm " href="{{ route('registrations.show', $registration->id) }}"><i class="fa fa-eye"></i></a>
                                             <a class="btn btn-primary btn-sm " href="{{ route('registrations.edit', $registration->id) }}"><i class="fas fa-user-edit"></i></a>
                                             {!! Form::open(array(
@@ -115,8 +115,8 @@
                                                 'route' => ['registrations.destroy', $registration->id])) !!}
                                                 {!! Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-sm']) !!}
                                             {!! Form::close() !!}
-                                            
-                                        </td>                                  
+
+                                        </td>
                                     @endif
                                 </tr>
                             @endforeach

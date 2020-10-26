@@ -5,12 +5,11 @@ mix.copyDirectory("resources/assets/admin/fonts", "public/admin/fonts");
 
 mix.styles(
     [
-        "resources/assets/admin/css/argon.min.css"
+        "resources/assets/admin/css/argon.min.css",
+        "resources/assets/admin/css/custom.css"
     ],
     "public/admin/css/admin.css"
-).purgeCss({
-    enabled: mix.inProduction(),
-});
+);
 
 mix.styles(
     [
@@ -18,18 +17,14 @@ mix.styles(
         "resources/assets/admin/vendor/@fortawesome/fontawesome-free/css/all.min.css",
     ],
     "public/admin/css/vendor.css"
-).purgeCss({
-    enabled: mix.inProduction(),
-});
+);
 
 mix.scripts(
     [
         "resources/assets/admin/js/argon.min.js"
     ],
     "public/admin/js/admin.js"
-).purgeCss({
-    enabled: mix.inProduction(),
-});
+);
 
 mix.scripts(
     [
@@ -38,11 +33,10 @@ mix.scripts(
         "resources/assets/admin/vendor/js-cookie/js.cookie.js",
         "resources/assets/admin/vendor/jquery.scrollbar/jquery.scrollbar.min.js",
         "resources/assets/admin/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js",
+        "resources/assets/admin/js/pace.min.js",
     ],
     "public/admin/js/vendor.js"
-).purgeCss({
-    enabled: mix.inProduction(),
-});
+);
 
 // Frontend
 mix.copyDirectory("resources/assets/landing/fonts", "public/landing/fonts");
@@ -58,9 +52,7 @@ mix.styles(
         "resources/assets/landing/css/slick-theme.css",
     ],
     "public/landing/css/vendor.css"
-).purgeCss({
-    enabled: mix.inProduction(),
-});
+);
 
 mix.styles(
     [
@@ -68,18 +60,14 @@ mix.styles(
         "resources/assets/landing/css/custom.css",
     ],
     "public/landing/css/landing.css"
-).purgeCss({
-    enabled: mix.inProduction(),
-});
+);
 
 mix.styles(
     [
         "resources/assets/landing/css/colors/skyblue.css",
     ],
     "public/landing/css/color.css"
-).purgeCss({
-    enabled: mix.inProduction(),
-});
+);
 
 mix.scripts(
     [
@@ -96,15 +84,17 @@ mix.scripts(
         "resources/assets/landing/js/feather.min.js",
     ],
     "public/landing/js/vendor.js"
-).purgeCss({
-    enabled: mix.inProduction(),
-});
+);
 
 mix.scripts(
     [
         "resources/assets/landing/js/app.js",
     ],
     "public/landing/js/landing.js"
-).purgeCss({
-    enabled: mix.inProduction(),
-});
+);
+
+
+if (mix.inProduction()) {
+    mix.purgeCss()
+    mix.version();
+}
