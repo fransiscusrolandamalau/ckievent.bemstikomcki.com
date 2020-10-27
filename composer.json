@@ -57,6 +57,9 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
+        "format": [
+            "vendor/bin/php-cs-fixer fix"
+        ],
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
             "@php artisan ide-helper:generate"
