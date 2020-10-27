@@ -34,13 +34,13 @@
                             <div class="collapse{{ request()->is('a/posts*', 'a/registrations*') ? ' show' : '' }}" id="event_management">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
-                                        <a href="{{ route('posts.index') }}" class="nav-link">
+                                        <a href="{{ route('posts.index') }}" class="nav-link{{ request()->is('a/posts*') ? ' active' : '' }}">
                                             <span class="sidenav-mini-icon"> P </span>
                                             <span class="sidenav-normal"> Events </span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{ route('registrations.index') }}" class="nav-link">
+                                        <a href="{{ route('registrations.index') }}" class="nav-link{{ request()->is('a/registrations*') ? ' active' : '' }}">
                                             <span class="sidenav-mini-icon"> RD </span>
                                             <span class="sidenav-normal"> Registration Data </span>
                                         </a>

@@ -1,18 +1,18 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+        <title>@yield('title') - {{ config('app.name') }}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="CKI Event brings people together through live experiences. Discover events that match your passions">
 
-        <title>@yield('title') - {{ config('app.name') }}</title>
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <!-- Favicon -->
         <link href="/assets/img/brand/favicon.png" rel="icon" type="image/png">
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
 
         <!-- Vendor -->
         <link href="{{ mix('admin/css/vendor.css') }}" rel="stylesheet">
@@ -35,7 +35,7 @@
         @include('admin.layouts.partials.sidebar')
         <div class="main-content" id="panel">
             @include('admin.layouts.partials.nav')
-            <div class="header bg-primary pb-6">
+            <div class="header bg-info pb-5">
                 <div class="container-fluid">
                     <div class="header-body">
                         <div class="row align-items-center py-4">

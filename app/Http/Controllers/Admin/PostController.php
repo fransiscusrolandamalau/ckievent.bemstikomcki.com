@@ -29,7 +29,7 @@ class PostController extends Controller
             $posts = Post::orderBy('created_at', 'DESC')->get();
         } else {
 		    $posts = Post::where('author_id', Auth::id())->orderBy('created_at', 'DESC')->get();
-        }	    
+        }
 
 		return view('admin.pages.posts.index', compact('posts'));
 	}

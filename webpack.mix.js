@@ -2,10 +2,11 @@ const mix = require("laravel-mix");
 require('laravel-mix-purgecss');
 
 mix.copyDirectory("resources/assets/admin/fonts", "public/admin/fonts");
+mix.copyDirectory("resources/assets/admin/vendor/@fortawesome/fontawesome-free/webfonts", "public/admin/webfonts");
 
 mix.styles(
     [
-        "resources/assets/admin/css/argon.min.css",
+        "resources/assets/admin/css/argon.css",
         "resources/assets/admin/css/custom.css"
     ],
     "public/admin/css/admin.css"
@@ -17,6 +18,15 @@ mix.styles(
         "resources/assets/admin/vendor/@fortawesome/fontawesome-free/css/all.min.css",
     ],
     "public/admin/css/vendor.css"
+);
+
+mix.styles(
+    [
+        "resources/assets/admin/vendor/datatables.net-bs4/css/dataTables.bootstrap4.min.css",
+        "resources/assets/admin/vendor/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css",
+        "resources/assets/admin/vendor/datatables.net-select-bs4/css/select.bootstrap4.min.css"
+    ],
+    "public/admin/css/vendor-datatables.css"
 );
 
 mix.scripts(
@@ -36,6 +46,20 @@ mix.scripts(
         "resources/assets/admin/js/pace.min.js",
     ],
     "public/admin/js/vendor.js"
+);
+
+mix.scripts(
+    [
+        "resources/assets/admin/vendor/datatables.net/js/jquery.dataTables.min.js",
+        "resources/assets/admin/vendor/datatables.net-bs4/js/dataTables.bootstrap4.min.js",
+        "resources/assets/admin/vendor/datatables.net-buttons/js/dataTables.buttons.min.js",
+        "resources/assets/admin/vendor/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js",
+        "resources/assets/admin/vendor/datatables.net-buttons/js/buttons.html5.min.js",
+        "resources/assets/admin/vendor/datatables.net-buttons/js/buttons.flash.min.js",
+        "resources/assets/admin/vendor/datatables.net-buttons/js/buttons.print.min.js",
+        "resources/assets/admin/vendor/datatables.net-select/js/dataTables.select.min.js"
+    ],
+    "public/admin/js/vendor-datatables.js"
 );
 
 // Frontend

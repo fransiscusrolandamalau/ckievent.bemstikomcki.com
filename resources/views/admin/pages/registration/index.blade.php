@@ -26,24 +26,15 @@
                     </div>
                 </div>
                 <div class="table-responsive py-4">
-                    <table class="table table-striped table-bordered data-custom" style="width:100%">
+                    <table class="table table-striped table-bordered table-hover data-table" style="width:100%">
                         <thead class="thead-light">
                             <tr>
-                                <th>#</th>
-                                <th>Event Name</th>
-                                <th>Full Name</th>
-                                <th>Email</th>
-                                <th>Phone Number</th>
-                                <th>Status</th>
-                                <th>Instansi</th>
-                                <th>NIM</th>
-                                <th>Kelas</th>
-                                <th>Semester</th>
-                                <th>Get Info</th>
-                                <th>Payment Confirmation</th>
-                                <th>Payment Upload</th>
-                                <th>Created</th>
-                                <th>Action</th>
+                                <th>Id</th>
+                                <th class="no-orderable">Full Name</th>
+                                <th class="no-orderable">Email</th>
+                                <th class="no-orderable">Event Name</th>
+                                <th>Created At</th>
+                                <th class="no-orderable">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -51,24 +42,9 @@
                                 <tr>
                                     @if($registration->posts['author_id'] == Auth::id())
                                         <td>{{ ++$key }}</td>
-                                        <td>{{ $registration->posts['event_title'] }}</td>
                                         <td>{{ $registration->full_name }}</td>
                                         <td>{{ $registration->email }}</td>
-                                        <td>{{ $registration->phone_number }}</td>
-                                        <td>{{ $registration->status }}</td>
-                                        <td>{{ $registration->instansi }}</td>
-                                        <td>{{ $registration->nim }}</td>
-                                        <td>{{ $registration->kelas }}</td>
-                                        <td>{{ $registration->semester }}</td>
-                                        <td>{{ $registration->info }}</td>
-                                        <td>
-                                            @if($registration->payment_confirmation == 1)
-                                                <label class="badge badge-success">Success</label>
-                                            @else
-                                                <label class="badge badge-danger">Failed</label>
-                                            @endif
-                                        </td>
-                                        <td><img src="{{ URL::to('/') }}/payment_upload/{{ $registration->payment_upload }}" width="50"></td>
+                                        <td>{{ $registration->posts['event_title'] }}</td>
                                         <td>{{ $registration->created_at }}</td>
                                         <td>
 
@@ -85,24 +61,9 @@
                                         </td>
                                     @elseif(Auth::user()->hasRole('Super Admin'))
                                         <td>{{ ++$key }}</td>
-                                        <td>{{ $registration->posts['event_title'] }}</td>
                                         <td>{{ $registration->full_name }}</td>
                                         <td>{{ $registration->email }}</td>
-                                        <td>{{ $registration->phone_number }}</td>
-                                        <td>{{ $registration->status }}</td>
-                                        <td>{{ $registration->instansi }}</td>
-                                        <td>{{ $registration->nim }}</td>
-                                        <td>{{ $registration->kelas }}</td>
-                                        <td>{{ $registration->semester }}</td>
-                                        <td>{{ $registration->info }}</td>
-                                        <td>
-                                            @if($registration->payment_confirmation == 1)
-                                                <label class="badge badge-success">Success</label>
-                                            @else
-                                                <label class="badge badge-danger">Failed</label>
-                                            @endif
-                                        </td>
-                                        <td><img src="{{ URL::to('/') }}/payment_upload/{{ $registration->payment_upload }}" width="50"></td>
+                                        <td>{{ $registration->posts['event_title'] }}</td>
                                         <td>{{ $registration->created_at }}</td>
                                         <td>
 
@@ -127,17 +88,3 @@
         </div>
     </div>
 @endsection
-@push('custom')
-    <script type="text/javascript">
-        $(function () {
-            var table = $('.data-custom').DataTable({
-                responsive: true,
-                select: true,
-                dom: 'Bfrtip',
-                buttons: [
-                    'excel'
-                ],
-            });
-        });
-    </script>
-@endpush
