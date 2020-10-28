@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use Response;
 use App\Models\Gallery;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Intervention\Image\Facades\Image;
-use Response;
 
 class GalleryController extends Controller
 {
     private $photo_path;
+
     public function __construct()
     {
         $this->photo_path = public_path('/gallery');
@@ -32,10 +33,10 @@ class GalleryController extends Controller
     {
         $photos = $request->file('file');
 
-        if (!is_array($photos)) {
+        if (! is_array($photos)) {
             $photos = [$photos];
         }
-        if (!is_dir($this->photo_path)) {
+        if (! is_dir($this->photo_path)) {
             mkdir($this->photo_path, 0777);
         }
         for ($i = 0; $i < count($photos); $i++) {
@@ -55,8 +56,9 @@ class GalleryController extends Controller
             $gallery->original_name = basename($photo->getClientOriginalName());
             $gallery->save();
         }
+
         return Response::json([
-            'message' => 'Image saved successfully'
+            'message' => 'Image saved successfully',
         ], 200);
     }
 
@@ -94,13 +96,13 @@ class GalleryController extends Controller
             unlink($resized_file);
         }
 
-        if (!empty($uploaded_image)) {
+        if (! empty($uploaded_image)) {
             $uploaded_image->delete();
         }
 
         return Response::json(['message' => 'File successfully delete'], 200);
     }
-    
+
     public function delete($id)
     {
         $gallery = Gallery::find($id);

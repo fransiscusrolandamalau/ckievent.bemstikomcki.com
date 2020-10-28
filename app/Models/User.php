@@ -3,10 +3,9 @@
 namespace App\Models;
 
 use DateTimeInterface;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
@@ -51,6 +50,6 @@ class User extends Authenticatable
 
     public function gravatar()
     {
-        return 'https://secure.gravatar.com/avatar/'.md5(strtolower(trim($this->email))).'?&s=150';
+        return 'https://secure.gravatar.com/avatar/' . md5(strtolower(trim($this->email))) . '?&s=150';
     }
 }

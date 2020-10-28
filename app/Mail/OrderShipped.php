@@ -3,34 +3,33 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
 class OrderShipped extends Mailable
 {
-	use Queueable, SerializesModels;
+    use Queueable, SerializesModels;
 
-	public $registration;
+    public $registration;
 
-	/**
-	 * Create a new message instance.
-	 *
-	 * @return void
-	 */
-	public function __construct($registration)
-	{
-		$this->registration = $registration;
-	}
+    /**
+     * Create a new message instance.
+     *
+     * @return void
+     */
+    public function __construct($registration)
+    {
+        $this->registration = $registration;
+    }
 
-	/**
-	 * Build the message.
-	 *
-	 * @return $this
-	 */
-	public function build()
-	{
+    /**
+     * Build the message.
+     *
+     * @return $this
+     */
+    public function build()
+    {
         return $this->view('emails.orders.shipped')
             ->with('registration', $this->registration);
-	}
+    }
 }
