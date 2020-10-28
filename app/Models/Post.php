@@ -30,7 +30,9 @@ class Post extends Model
 		'event_status',
 		'path_to',
 		'is_published'
-	];
+    ];
+
+    protected $with = ['author'];
 
 	public function author()
 	{

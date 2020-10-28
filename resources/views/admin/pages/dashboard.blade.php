@@ -1,5 +1,4 @@
-@extends('admin.layouts.main')
-@section('title', 'Dashboard')
+@extends('admin.layouts.main', ['title' => 'Dashboard'])
 @section('content')
     <div class="row">
         <div class="col-xl-3 col-md-6">

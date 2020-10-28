@@ -22,13 +22,12 @@ Route::group(['prefix' => 'participants', 'namespace' => 'Admin', 'middleware' =
     Route::get('/re-registrations/{registration}/payment-upload', 'ReRegistrationController@paymentUpload')->name('payment-upload');
     Route::patch('/re-registrations/{registration}', 'ReRegistrationController@paymentUploadStore')->name('payment-upload.store');
 });
-Route::group(['namespace' => 'Front'], function () {
-    Route::get('/', 'BaseController@event')->name('event');
+Route::group(['namespace' => 'Landing'], function () {
+    Route::get('/', 'BaseController@home')->name('event');
     Route::get('/event-gallery', 'BaseController@eventGallery')->name('event-gallery');
 	Route::get('/{slug}', 'BaseController@eventDetail')->name('event.show');
 	Route::get('/registration/{slug}', 'BaseController@eventRegistration')->name('event-registration.show');
 	Route::post('/registration', 'BaseController@eventRegistrationPost')->name('event-registration.store');
 	Route::get('/about-us', 'BaseController@aboutUs')->name('about-us');
 	Route::get('/contact', 'BaseController@contact')->name('contact');
-	Route::fallback('BaseController@error');
 });

@@ -1,4 +1,4 @@
-@extends('front.layouts.main')
+@extends('landing.layouts.main')
 @section('stylesheet')
     <link rel="stylesheet" type="text/css" href="{{ ('front/assets/css/custom.css') }}"/>
 
@@ -37,7 +37,7 @@
                                 </li>
                                 <li><i class="icofont-mega-phone"></i>{{ $post->author->name }}</li>
                             </ul>
-                            
+
                         </div>
                     </div>
                 </div>
