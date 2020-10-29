@@ -1,8 +1,8 @@
 <header id="topnav" class="defaultscroll sticky nav-sticky">
-    <div class="container">
+    <div class="container-fluid">
         <div>
             <a class="logo" href="{{ url('/') }}">
-                <img src="{{ asset('images/logo190x50px.png') }}" height="40" alt="Logo">
+                <img src="{{ asset('images/logo190x50px.png') }}" height="30" alt="Logo">
             </a>
         </div>
         <div class="menu-extras">

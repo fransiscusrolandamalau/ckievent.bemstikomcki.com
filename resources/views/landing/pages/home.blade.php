@@ -1,4 +1,4 @@
-@extends('landing.layouts.main')
+@extends('landing.layouts.main', ['title' => 'Home'])
 @section('banner')
     <div class="container-fluid px-0 px-md-3 mt-5 pt-md-4">
         <div class="slider single-item">
@@ -34,7 +34,7 @@
             <div class="row align-items-center pb-4">
                 <div class="col-md-8">
                     <div class="section-title text-center text-md-left">
-                        <h2 class="font-weight-bold title-dark">Popular Events</h2>
+                        <h2 class="font-weight-bold title-dark">Featured events</h2>
                     </div>
                 </div>
             </div>
@@ -80,7 +80,7 @@
             <div class="row align-items-center pb-4">
                 <div class="col-md-8">
                     <div class="section-title text-center text-md-left">
-                        <h2 class="font-weight-bold title-dark">All Events</h2>
+                        <h2 class="font-weight-bold title-dark">More events</h2>
                     </div>
                 </div>
 
@@ -91,7 +91,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div id="posts" class="row">
                 @foreach ($posts as $post)
                     <div class="col-lg-4 col-md-6 mt-4 pt-2 d-flex align-items-stretch">
                         <div class="card blog rounded border-0 shadow overflow-hidden">

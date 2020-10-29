@@ -1,4 +1,4 @@
-@extends('front.layouts.main')
+@extends('landing.layouts.main')
 @section('banner')
     <div class="page-banner banner-bg-one">
         <div class="container">

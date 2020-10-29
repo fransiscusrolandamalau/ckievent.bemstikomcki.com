@@ -21,6 +21,7 @@ class Registration extends Model
         'payment_confirmation',
         'payment_upload',
     ];
+    protected $with = ['posts'];
 
     public function posts()
     {
