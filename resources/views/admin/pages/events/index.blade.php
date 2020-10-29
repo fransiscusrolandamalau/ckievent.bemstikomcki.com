@@ -11,7 +11,7 @@
                         </div>
                         <div class="col-6 text-right">
                             @can('post-create')
-                                <a href="{{ route('posts.create') }}" class="btn btn-icon btn-primary btn-sm">
+                                <a href="{{ route('events.create') }}" class="btn btn-icon btn-primary btn-sm">
                                     <span class="btn-inner--icon"><i class="fas fa-plus"></i></span>
                                     <span class="btn-inner--text">Add New @yield('title')</span>
                                 </a>
@@ -32,7 +32,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                        @foreach ($posts as $key => $post)
+                        @foreach ($events as $key => $post)
                             <tr>
                                 <td>{{ ++$key }}</td>
                                 <td>
@@ -52,14 +52,14 @@
                                 <td>
                                     <a class="btn btn-secondary btn-sm" href="{{ route('event.show', $post->slug) }}" target="_blank" rel="noopener" data-toggle="tooltip" data-placement="top" title="Show" ><i class="fa fa-eye"></i></a>
                                     @can('post-edit')
-                                    <a class="btn btn-secondary btn-sm" href="{{ route('posts.edit', $post->id) }}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-pencil-alt"></i></a>
+                                    <a class="btn btn-secondary btn-sm" href="{{ route('events.edit', $post->id) }}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-pencil-alt"></i></a>
                                     @endcan
                                     @can('post-delete')
                                     {!! Form::open(array(
                                         'style' => 'display:inline-block',
                                         'method' => 'DELETE',
                                         'onsubmit' => "return confirm('Are you sure?');",
-                                        'route' => ['posts.destroy', $post->id])) !!}
+                                        'route' => ['events.destroy', $post->id])) !!}
                                         {!! Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-secondary btn-sm', 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'title' => 'Delete']) !!}
                                     {!! Form::close() !!}
                                     @endcan

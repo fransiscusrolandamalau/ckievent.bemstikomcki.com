@@ -5,7 +5,7 @@ Route::group(['prefix' => 'auth', 'namespace' => 'Admin'], function () {
 });
 Route::group(['prefix' => 'a', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
     Route::get('/dashboard', 'BaseController@dashboard')->name('dashboard');
-    Route::resource('posts', 'PostController');
+    Route::resource('events', 'EventController');
     Route::resource('users', 'UserController');
     Route::resource('roles', 'RoleController');
     Route::resource('profiles', 'ProfileController');

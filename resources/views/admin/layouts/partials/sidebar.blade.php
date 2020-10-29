@@ -27,14 +27,14 @@
                     @endrole
                     @hasanyrole('Super Admin|Author')
                         <li class="nav-item">
-                            <a class="nav-link{{ request()->is('a/posts*', 'a/registrations*') ? ' active' : '' }}" href="#event_management" data-toggle="collapse" role="button" aria-expanded="{{ request()->is('a/posts*', 'a/registrations*') ? 'true' : 'false' }}" aria-controls="event_management">
+                            <a class="nav-link{{ request()->is('a/events*', 'a/registrations*') ? ' active' : '' }}" href="#event_management" data-toggle="collapse" role="button" aria-expanded="{{ request()->is('a/events*', 'a/registrations*') ? 'true' : 'false' }}" aria-controls="event_management">
                                 <i class="ni ni-single-copy-04 text-pink"></i>
                                 <span class="nav-link-text">Event Management</span>
                             </a>
-                            <div class="collapse{{ request()->is('a/posts*', 'a/registrations*') ? ' show' : '' }}" id="event_management">
+                            <div class="collapse{{ request()->is('a/events*', 'a/registrations*') ? ' show' : '' }}" id="event_management">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
-                                        <a href="{{ route('posts.index') }}" class="nav-link{{ request()->is('a/posts*') ? ' active' : '' }}">
+                                        <a href="{{ route('events.index') }}" class="nav-link{{ request()->is('a/events*') ? ' active' : '' }}">
                                             <span class="sidenav-mini-icon"> P </span>
                                             <span class="sidenav-normal"> Events </span>
                                         </a>

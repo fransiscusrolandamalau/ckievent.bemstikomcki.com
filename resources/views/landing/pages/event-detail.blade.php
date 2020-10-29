@@ -1,6 +1,6 @@
 @extends('landing.layouts.main')
 @section('banner')
-    <div class="page-banner banner-bg-one">
+    {{-- <div class="page-banner banner-bg-one">
         <div class="container">
             <div class="banner-text">
                 @foreach ($posts as $post)
@@ -8,10 +8,13 @@
                 @endforeach
             </div>
         </div>
-    </div>
+    </div> --}}
+    <section class="bg-half-260 d-table w-100" style="background: url('images/job/company.jpg') center center;">
+        <div class="bg-overlay"></div>
+    </section>
 @endsection
 @section('content')
-    <section class="single-event-area ptb-100">
+    {{-- <section class="single-event-area ptb-100">
         <div class="container">
             @foreach ($posts as $key => $post)
             <div class="row">
@@ -79,5 +82,74 @@
             </div>
             @endforeach
         </div>
-    </section>
+    </section> --}}
+    <section class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-md-5 col-12">
+                    <div class="job-profile position-relative">
+                        <div class="rounded shadow bg-white">
+                            <div class="text-center">
+                                <img src="{{ asset('thumbnail/'.$posts->thumbnail) }}" width="445px" alt="">
+                            </div>
+
+                            <div class="p-4">
+                                <h5>Event Info :</h5>
+                                <ul class="list-unstyled mb-4">
+                                    <li class="h6">
+                                        <i data-feather="calendar" class="fea icon-sm text-warning mr-2"></i>
+                                        <span class="text-muted">Start Date :</span> {{ Carbon\Carbon::parse($posts->event_start)->isoFormat('dddd, D MMM, Y') }}
+                                    </li>
+                                    <li class="h6">
+                                        <i data-feather="clock" class="fea icon-sm text-warning mr-2"></i>
+                                        <span class="text-muted">Time :</span> {{ Carbon\Carbon::parse($posts->start_time)->format('H:i') . " - " . $posts->end_time }} WIB
+                                    </li>
+                                    @if ($posts->event_start != $posts->event_ends)
+                                        <li class="h6">
+                                            <i data-feather="calendar" class="fea icon-sm text-warning mr-2"></i>
+                                            <span class="text-muted">End Date :</span> {{ Carbon\Carbon::parse($posts->event_ends)->isoFormat('dddd, D MMM, Y') }}
+                                        </li>
+                                    @endif
+                                    <li class="h6">
+                                        <i data-feather="phone" class="fea icon-sm text-warning mr-2"></i>
+                                        <span class="text-muted">Contact Person :</span> {{ $posts->contact }}
+                                    </li>
+                                    <li class="h6">
+                                        <i data-feather="map-pin" class="fea icon-sm text-warning mr-2"></i>
+                                        <span class="text-muted">Location :</span> {{ $posts->location }}
+                                    </li>
+                                    <li class="h6">
+                                        <i data-feather="shopping-cart" class="fea icon-sm text-warning mr-2"></i>
+                                        <span class="text-muted">Payment Status :</span> {{ $posts->payment_status == 1 ? 'Paid' : 'Free' }}
+                                    </li>
+                                    <li class="h6">
+                                        <i data-feather="meh" class="fea icon-sm text-warning mr-2"></i>
+                                        <span class="text-muted">Presented by :</span> {{ $posts->author->name }}
+                                    </li>
+                                </ul>
+                                <a href="javascipt:void(0)" data-toggle="modal" data-target="#ApplyNow" class="btn btn-block btn-success">Register</a>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--end col-->
+
+                <div class="col-lg-7 col-md-7 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
+                    <div class="ml-md-4">
+                        <h4>About this Event</h4>
+                        {!! nl2br($posts->content) !!}
+                        <h4 class="mt-lg-5 mt-4">Share With Friends</h4>
+                        <ul class="list-unstyled social-icon mb-0 mt-4">
+                            <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="facebook" class="fea icon-sm fea-social"></i></a></li>
+                            <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="instagram" class="fea icon-sm fea-social"></i></a></li>
+                            <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="twitter" class="fea icon-sm fea-social"></i></a></li>
+                            <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="linkedin" class="fea icon-sm fea-social"></i></a></li>
+                            <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="github" class="fea icon-sm fea-social"></i></a></li>
+                            <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="youtube" class="fea icon-sm fea-social"></i></a></li>
+                            <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="gitlab" class="fea icon-sm fea-social"></i></a></li>
+                        </ul>
+                    </div>
+                </div><!--end col-->
+            </div><!--end row-->
+        </div><!--end container-->
+    </section><!--end section-->
 @endsection

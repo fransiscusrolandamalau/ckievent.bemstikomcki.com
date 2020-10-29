@@ -1,9 +1,11 @@
 {
     "/admin/css/admin.css": "/admin/css/admin.css",
     "/admin/css/vendor.css": "/admin/css/vendor.css",
+    "/admin/css/forms.css": "/admin/css/forms.css",
     "/admin/css/vendor-datatables.css": "/admin/css/vendor-datatables.css",
     "/admin/js/admin.js": "/admin/js/admin.js",
     "/admin/js/vendor.js": "/admin/js/vendor.js",
+    "/admin/js/forms.js": "/admin/js/forms.js",
     "/admin/js/vendor-datatables.js": "/admin/js/vendor-datatables.js",
     "/landing/css/vendor.css": "/landing/css/vendor.css",
     "/landing/css/landing.css": "/landing/css/landing.css",

@@ -32,7 +32,7 @@ class BaseController extends Controller
 
     public function eventDetail($slug)
     {
-        $posts = Post::where('slug', $slug)->get();
+        $posts = Post::where('slug', $slug)->where('is_published', 1)->first();
 
         return view('landing.pages.event-detail', compact('posts'));
     }

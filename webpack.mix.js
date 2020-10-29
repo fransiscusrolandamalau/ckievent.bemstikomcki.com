@@ -22,6 +22,14 @@ mix.styles(
 
 mix.styles(
     [
+        "resources/assets/admin/vendor/select2/dist/css/select2.min.css",
+        "resources/assets/admin/vendor/quill/dist/quill.core.css",
+    ],
+    "public/admin/css/forms.css"
+);
+
+mix.styles(
+    [
         "resources/assets/admin/vendor/datatables.net-bs4/css/dataTables.bootstrap4.min.css",
         "resources/assets/admin/vendor/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css",
         "resources/assets/admin/vendor/datatables.net-select-bs4/css/select.bootstrap4.min.css"
@@ -46,6 +54,20 @@ mix.scripts(
         "resources/assets/admin/js/pace.min.js",
     ],
     "public/admin/js/vendor.js"
+);
+
+mix.scripts(
+    [
+        "resources/assets/admin/vendor/select2/dist/js/select2.min.js",
+        "resources/assets/admin/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js",
+        "resources/assets/admin/vendor/moment.min.js",
+        "resources/assets/admin/vendor/bootstrap-datetimepicker.js",
+        "resources/assets/admin/vendor/nouislider/distribute/nouislider.min.js",
+        "resources/assets/admin/vendor/quill/dist/quill.min.js",
+        "resources/assets/admin/vendor/dropzone/dist/min/dropzone.min.js",
+        "resources/assets/admin/vendor/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js",
+    ],
+    "public/admin/js/forms.js"
 );
 
 mix.scripts(

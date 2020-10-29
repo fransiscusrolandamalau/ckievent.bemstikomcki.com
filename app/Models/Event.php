@@ -2,10 +2,9 @@
 
 namespace App\Models;
 
-use DateTimeInterface;
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class Event extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -13,39 +12,42 @@ class Post extends Model
      * @var array
      */
     protected $fillable = [
-        'author_id',
         'event_title',
         'slug',
-        'tag',
+        'excerpt',
         'location',
         'event_start',
         'start_time',
         'event_ends',
         'end_time',
         'thumbnail',
-        'content',
-        'contact',
+        'description',
+        'terms_and_conditions',
+        'contact_person',
         'payment_status',
         'event_status',
         'path_to',
         'is_published',
+        'featured',
+        'meta_title',
+        'meta_description',
     ];
 
     protected $with = ['author'];
 
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
+
     public function author()
     {
-        return $this->belongsTo('App\Models\User', 'author_id');
-    }
-
-    public function tag()
-    {
-        return $this->belongsToMany(Tag::class, 'event_pivot');
-    }
-
-    protected function serializeDate(DateTimeInterface $date)
-    {
-        return $date->format('d, M Y H:i');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function registration()

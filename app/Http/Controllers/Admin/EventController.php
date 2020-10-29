@@ -4,13 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use Auth;
 use App\Models\Tag;
-use App\Models\Post;
 use App\Traits\UploadTrait;
 use Illuminate\Support\Str;
-use App\Http\Requests\PostRequest;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\EventRequest;
+use App\Models\Event;
 
-class PostController extends Controller
+class EventController extends Controller
 {
     use UploadTrait;
 
@@ -25,22 +25,22 @@ class PostController extends Controller
     public function index()
     {
         if (Auth::user()->hasRole('Super Admin')) {
-            $posts = Post::orderBy('created_at', 'DESC')->get();
+            $events = Event::orderBy('created_at', 'DESC')->get();
         } else {
-            $posts = Post::where('author_id', Auth::id())->orderBy('created_at', 'DESC')->get();
+            $events = Event::where('author_id', Auth::id())->orderBy('created_at', 'DESC')->get();
         }
 
-        return view('admin.pages.posts.index', compact('posts'));
+        return view('admin.pages.events.index', compact('events'));
     }
 
     public function create()
     {
         $tags = Tag::all();
 
-        return view('admin.pages.posts.create', compact('tags'));
+        return view('admin.pages.events.create', compact('tags'));
     }
 
-    public function store(PostRequest $request)
+    public function store(EventRequest $request)
     {
         $input = $request->all();
 
@@ -54,25 +54,25 @@ class PostController extends Controller
             $this->uploadOne($image, $folder, 'public', $name);
             $input['thumbnail'] = $filePath;
         }
-        $post = Post::create($input);
+        Event::create($input);
 
-        return redirect()->route('posts.index')
-            ->with('success', 'Post created successfully');
+        return redirect()->route('events.index')
+            ->with('success', 'Event created successfully');
     }
 
-    public function show(Post $post, $slug)
+    public function show(Event $event, $slug)
     {
-        $posts = Post::where('slug', $slug)->get();
+        $event = Event::where('slug', $slug)->get();
 
-        return view('front.pages.event', compact('posts'));
+        return view('front.pages.event', compact('event'));
     }
 
-    public function edit(Post $post)
+    public function edit(Event $event)
     {
-        return view('admin.pages.posts.edit', compact('post'));
+        return view('admin.pages.events.edit', compact('event'));
     }
 
-    public function update(PostRequest $request, Post $post)
+    public function update(EventRequest $request, Event $event)
     {
         $input = $request->all();
 
@@ -85,17 +85,17 @@ class PostController extends Controller
             $this->uploadOne($image, $folder, 'public', $name);
             $input['thumbnail'] = $filePath;
         }
-        $post->update($input);
+        $event->update($input);
 
-        return redirect()->route('posts.index')
-            ->with('success', 'Post updated successfully');
+        return redirect()->route('events.index')
+            ->with('success', 'Event updated successfully');
     }
 
-    public function destroy(Post $post)
+    public function destroy(Event $event)
     {
-        $post->delete();
+        $event->delete();
 
-        return redirect()->route('posts.index')
-            ->with('success', 'Post deleted successfully');
+        return redirect()->route('events.index')
+            ->with('success', 'Event deleted successfully');
     }
 }

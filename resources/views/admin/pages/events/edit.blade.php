@@ -1,5 +1,5 @@
 @extends('admin.layouts.main-form')
-@section('title', 'Add Event')
+@section('title', 'Edit Event')
 @section('body')
     @if (count($errors) > 0)
         <div class="alert alert-danger">
@@ -16,16 +16,16 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-6">
-                    <a href="{{ route('posts.index') }}" class="btn btn-primary btn-sm">Back</a>
+                    <a href="{{ route('events.index') }}" class="btn btn-primary btn-sm">Back</a>
                 </div>
                 <div class="col-6 text-right">
-                    <h4>Add Event</h4>
+                    <h4>Edit Event</h4>
                 </div>
             </div>
         </div>
 
         <div class="card-body">
-            {!! Form::open(array('route' => 'posts.store', 'method' => 'POST', 'files' => true)) !!}
+            {!! Form::model($post, ['method' => 'PATCH', 'files' => true, 'route' => ['events.update', $post->id]]) !!}
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
@@ -84,10 +84,11 @@
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
+                    <img src="{{ URL::to('/') }}/thumbnail/{{ $post->thumbnail }}" class="img-thumbnail" width="50" />
                     <div class="form-group">
                         {!! Form::label('thumbnail', 'Thumbnail', ['class' => 'form-control-label']) !!}
                         {!! Form::file('thumbnail', array('class' => 'form-control')) !!}
-                            <h6 class="text-red">Recommended width=750px min height=501px</h6>
+                        <h6 class="text-red">min width=750, min height=501</h6>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
@@ -127,7 +128,7 @@
                     </div>
                 </div>
             </div>
-            {!! Form::submit('Save post', ['class' => 'btn btn-primary btn-block']) !!}
+            {!! Form::submit('Update post', ['class' => 'btn btn-primary btn-block']) !!}
             {!! Form::close() !!}
         </div>
     </div>
