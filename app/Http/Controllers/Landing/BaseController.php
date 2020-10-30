@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Landing;
 
 use Hash;
-use App\Models\Post;
 use App\Models\User;
 use App\Models\Gallery;
 use App\Mail\OrderShipped;
@@ -11,35 +10,23 @@ use App\Models\Registration;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\RegistrationFrontRequest;
+use Event;
 
 class BaseController extends Controller
 {
     public function home()
     {
         return view('landing.pages.home', [
-            'posts' => Post::where('is_published', true)->orderBy('created_at', 'DESC')->paginate(6),
-            'popular_posts' => Post::where('is_published', true)->orderBy('created_at', 'DESC')->limit(3)->get(),
+            'events' => Event::where('is_published', true)->orderBy('created_at', 'DESC')->paginate(6),
+            'popular_events' => Event::where('is_published', true)->orderBy('created_at', 'DESC')->limit(3)->get(),
         ]);
-    }
-
-    public function event()
-    {
-        $posts = Post::where('is_published', true)->orderBy('event_start', 'DESC')->paginate(9);
-
-        return view('landing.pages.event', compact('posts'))
-            ->with('i', (request()->input('page', 1) - 1) * 9);
     }
 
     public function eventDetail($slug)
     {
-        $posts = Post::where('slug', $slug)->where('is_published', 1)->first();
+        $events = Event::where('slug', $slug)->where('is_published', 1)->first();
 
-        return view('landing.pages.event-detail', compact('posts'));
-    }
-
-    public function contact()
-    {
-        return view('landing.pages.contact');
+        return view('landing.pages.event-detail', compact('events'));
     }
 
     public function eventGallery()
@@ -50,16 +37,11 @@ class BaseController extends Controller
                         ->with('i', (request()->input('page', 1) - 1) * 18);
     }
 
-    public function aboutUs()
-    {
-        return view('landing.pages.about-us');
-    }
-
     public function eventRegistration($slug)
     {
-        $posts = Post::where('slug', $slug)->pluck('event_title', 'id');
+        $events = Event::where('slug', $slug)->pluck('event_title', 'id');
 
-        return view('landing.pages.registration-event', compact('posts'));
+        return view('landing.pages.registration-event', compact('events'));
     }
 
     public function eventRegistrationPost(RegistrationFrontRequest $request)
@@ -73,7 +55,7 @@ class BaseController extends Controller
         $user->assignRole($request->input('roles', 'Participants'));
 
         $registrations = Registration::create($input);
-        $registrations->loadMissing('posts');
+        $registrations->loadMissing('events');
 
         $registration = [
             'full_name' => $request->full_name,

@@ -24,6 +24,20 @@
         </div>
     </div>
 
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group @if($errors->has('excerpt')) has-error @endif">
+            <div class="input-group input-group-merge">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-tags"></i></span>
+                </div>
+                {!! Form::text('excerpt', null, ['class' => 'form-control', 'placeholder' => 'Excerpt']) !!}
+            </div>
+            @if ($errors->has('excerpt'))
+                <span class="text-danger">{!! $errors->first('excerpt') !!}</span>
+            @endif
+        </div>
+    </div>
+
     <div class="col-md-6">
         <div class="form-group @if($errors->has('event_title')) has-error @endif">
             <select name="category" id="category" class="form-control @error('category') is-invalid @enderror">
