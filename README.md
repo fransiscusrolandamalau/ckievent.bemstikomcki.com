@@ -22,3 +22,7 @@ $ php artisan key:generate
 # laravel migrate
 $ php artisan migrate
 ```
+
+## License
+
+Source code is available under [MIT License](./LICENSE.md)  
