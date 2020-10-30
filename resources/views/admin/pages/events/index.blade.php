@@ -32,34 +32,34 @@
                             </tr>
                         </thead>
                         <tbody>
-                        @foreach ($events as $key => $post)
+                        @foreach ($events as $key => $event)
                             <tr>
                                 <td>{{ ++$key }}</td>
                                 <td>
-                                    <a class="avatar mr-3" href="{{ asset('thumbnail/'.$post->thumbnail) }}" target="_blank">
-                                        <img style="object-fit: cover; object-position: center;" src="{{ asset('thumbnail/'.$post->thumbnail) }}">
+                                    <a class="avatar mr-3" href="{{ $event->takeImage }}" target="_blank">
+                                        <img style="object-fit: cover; object-position: center;" src="{{ $event->takeImage }}">
                                     </a>
                                 </td>
-                                <td>{{ $post->event_title }}</td>
-                                <td>{{ $post->author->name }}</td>
+                                <td>{{ $event->event_title }}</td>
+                                <td>{{ $event->author->name }}</td>
                                 <td>
-                                    @if($post->event_status == false)
+                                    @if($event->event_status == false)
                                         <label class="badge badge-pill badge-danger">Closed</label>
                                     @else
                                         <label class="badge badge-pill badge-success">Open</label>
                                     @endif
                                 </td>
                                 <td>
-                                    <a class="btn btn-secondary btn-sm" href="{{ route('event.show', $post->slug) }}" target="_blank" rel="noopener" data-toggle="tooltip" data-placement="top" title="Show" ><i class="fa fa-eye"></i></a>
+                                    <a class="btn btn-secondary btn-sm" href="{{ route('event.show', $event->slug) }}" target="_blank" rel="noopener" data-toggle="tooltip" data-placement="top" title="Show" ><i class="fa fa-eye"></i></a>
                                     @can('post-edit')
-                                    <a class="btn btn-secondary btn-sm" href="{{ route('events.edit', $post->id) }}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-pencil-alt"></i></a>
+                                    <a class="btn btn-secondary btn-sm" href="{{ route('events.edit', $event->id) }}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-pencil-alt"></i></a>
                                     @endcan
                                     @can('post-delete')
                                     {!! Form::open(array(
                                         'style' => 'display:inline-block',
                                         'method' => 'DELETE',
                                         'onsubmit' => "return confirm('Are you sure?');",
-                                        'route' => ['events.destroy', $post->id])) !!}
+                                        'route' => ['events.destroy', $event->id])) !!}
                                         {!! Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-secondary btn-sm', 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'title' => 'Delete']) !!}
                                     {!! Form::close() !!}
                                     @endcan

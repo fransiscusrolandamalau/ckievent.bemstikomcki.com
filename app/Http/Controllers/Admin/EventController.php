@@ -3,15 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use Auth;
-use App\Models\{Event, Category};
-use App\Traits\UploadTrait;
+use App\Models\Event;
+use App\Models\Category;
 use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\EventRequest;
 
 class EventController extends Controller
 {
-    use UploadTrait;
     public function __construct()
     {
         $this->middleware('permission:post-list|post-create|post-edit|post-delete', ['only' => ['index', 'show']]);
@@ -41,22 +40,28 @@ class EventController extends Controller
 
     public function store(EventRequest $request)
     {
-        $input = $request->all();
+        $attr = $request->all();
 
-        $input['slug'] = Str::slug($input['event_title']);
-        $input['author_id'] = $request->user()->id;
-        if ($request->has('thumbnail')) {
-            $image = $request->file('thumbnail');
-            $name = Str::slug($request->input('name')) . '_' . time();
-            $folder = '/thumbnail/';
-            $filePath = $name . '.' . $image->getClientOriginalExtension();
-            $this->uploadOne($image, $folder, 'public', $name);
-            $input['thumbnail'] = $filePath;
+        $attr['slug'] = Str::slug(request('event_title')). '-' . dechex(time());
+        $attr['meta_title'] = request('event_title');
+        $attr['meta_description'] = Str::limit(strip_tags(request('description')), 139);
+
+        $thumbnail = request()->file('thumbnail');
+        $filename = $thumbnail->getClientOriginalName();
+        $thumbnailName = safe_file_name(pathinfo($filename, PATHINFO_FILENAME)) . '-' . uniqid() . '.' . $thumbnail->getClientOriginalExtension();
+        if ($thumbnail) {
+            $thumbnailUrl = $thumbnail->storeAs("event/thumbnails", $thumbnailName);
+        } else {
+            $thumbnailUrl = null;
         }
-        Event::create($input);
+
+        $attr['category_id'] = request('category');
+        $attr['thumbnail'] = $thumbnailUrl;
+
+        auth()->user()->event()->create($attr);
 
         return redirect()->route('events.index')
-            ->with('success', 'Event created successfully');
+            ->with('success', 'Event has been created successfully');
     }
 
     public function show(Event $event, $slug)
@@ -68,26 +73,34 @@ class EventController extends Controller
 
     public function edit(Event $event)
     {
-        return view('admin.pages.events.edit', compact('event'));
+        return view('admin.pages.events.edit', [
+            'events' => $event,
+            'categories' => Category::get(),
+        ]);
     }
 
     public function update(EventRequest $request, Event $event)
     {
-        $input = $request->all();
+        $attr = $request->all();
 
-        $image_name = $request->hidden_image;
-        $image = $request->file('thumbnail');
-        if ($image != '') {
-            $name = Str::slug($request->input('name')) . '_' . time();
-            $folder = '/thumbnail/';
-            $filePath = $name . '.' . $image->getClientOriginalExtension();
-            $this->uploadOne($image, $folder, 'public', $name);
-            $input['thumbnail'] = $filePath;
+        $hidden_thumbnail = request('hidden_thumbnail');
+        $thumbnail = request()->file('thumbnail');
+        $filename = $thumbnail->getClientOriginalName();
+        $thumbnailName = safe_file_name(pathinfo($filename, PATHINFO_FILENAME)) . '-' . uniqid() . '.' . $thumbnail->getClientOriginalExtension();
+        if ($thumbnail) {
+            \Storage::delete($event->thumbnail);
+            $thumbnailUrl = $thumbnail->storeAs("event/thumbnails", $thumbnailName);
+        } else {
+            $thumbnailUrl = $hidden_thumbnail;
         }
-        $event->update($input);
+
+        $attr['category_id'] = request('category');
+        $attr['thumbnail'] = $thumbnailUrl;
+
+        $event->update($attr);
 
         return redirect()->route('events.index')
-            ->with('success', 'Event updated successfully');
+            ->with('success', 'Event has been updated successfully');
     }
 
     public function destroy(Event $event)

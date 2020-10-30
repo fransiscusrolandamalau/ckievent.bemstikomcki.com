@@ -2,6 +2,8 @@
 
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group @if($errors->has('thumbnail')) has-error @endif">
+            <img class="img-thumbnail" width="150px" style="object-fit: cover; object-position: center;" src="{{ $events->takeImage }}"><br>
+            {{ Form::hidden('hidden_thumbnail', $events->takeImage) }}
             {!! Form::label('thumbnail', 'Upload pictures / posters / banners', ['class' => 'form-control-label']) !!}
             {!! Form::file('thumbnail', ['class' => 'form-control', 'id' => 'thumbnail']) !!}
             <h6 class="text-danger">Recommended 724 x 340px and no more than 2Mb</h6>
@@ -60,7 +62,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                 </div>
-                {!! Form::text('event_start', null, ['class' => 'form-control datepicker', 'placeholder' => 'Start Date *']) !!}
+                {!! Form::text('event_start', null, ['class' => 'form-control datepicker', 'data-date-format' => 'yyyy-mm-dd', 'placeholder' => 'Start Date *']) !!}
             </div>
             @if ($errors->has('event_start'))
                 <span class="text-danger">{!! $errors->first('event_start') !!}</span>
@@ -88,7 +90,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                 </div>
-                {!! Form::text('event_ends', null, ['class' => 'form-control datepicker', 'placeholder' => 'End Date *']) !!}
+                {!! Form::text('event_ends', null, ['class' => 'form-control datepicker', 'data-date-format' => 'yyyy-mm-dd', 'placeholder' => 'End Date *']) !!}
             </div>
             @if ($errors->has('event_ends'))
                 <span class="text-danger">{!! $errors->first('event_ends') !!}</span>
@@ -102,7 +104,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-clock"></i></span>
                 </div>
-                {!! Form::text('end_time', null, ['class' => 'form-control timepicker', 'placeholder' => 'End Time *']) !!}
+                {!! Form::text('end_time', null, ['class' => 'form-control timepicker', 'data-time-format' => 'H:i:s', 'placeholder' => 'End Time *']) !!}
             </div>
             @if ($errors->has('end_time'))
                 <span class="text-danger">{!! $errors->first('end_time') !!}</span>

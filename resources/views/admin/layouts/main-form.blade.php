@@ -19,7 +19,7 @@
     <script type="text/javascript">
         $(function () {
             $('.timepicker').datetimepicker({
-                format: 'LT',
+                format: 'hh:mm:ss',
                 icons: {
                     up: "fa fa-chevron-up",
                     down: "fa fa-chevron-down",

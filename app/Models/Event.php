@@ -29,6 +29,7 @@ class Event extends Model
         'is_published',
         'featured',
         'meta_title',
+        'category_id',
         'meta_description',
     ];
 
@@ -47,5 +48,10 @@ class Event extends Model
     public function registration()
     {
         return $this->hasOne('App\Models\Registration', 'event_id', 'id');
+    }
+
+    public function getTakeImageAttribute()
+    {
+        return "/storage/" . $this->thumbnail;
     }
 }

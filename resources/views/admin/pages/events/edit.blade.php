@@ -14,7 +14,7 @@
         </div>
 
         <div class="card-body">
-            {!! Form::model($post, ['method' => 'PATCH', 'files' => true, 'route' => ['events.update', $post->id]]) !!}
+            {!! Form::model($events, ['method' => 'PATCH', 'files' => true, 'route' => ['events.update', $events->id]]) !!}
             @include('admin.pages.events.partials.form-control')
             {!! Form::close() !!}
         </div>
