@@ -17,7 +17,6 @@ class CreateEventsTable extends Migration
             $table->id();
             $table->string('event_title', 191);
             $table->string('slug', 191)->unique();
-            $table->string('excerpt')->nullable();
             $table->string('location', 100);
             $table->date('event_start')->nullable();
             $table->time('start_time')->nullable();

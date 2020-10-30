@@ -3,10 +3,8 @@
 namespace App\Http\Controllers\Landing;
 
 use Hash;
-use App\Models\User;
-use App\Models\Gallery;
+use App\Models\{User, Gallery, Registration};
 use App\Mail\OrderShipped;
-use App\Models\Registration;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\RegistrationFrontRequest;

@@ -25,7 +25,6 @@ class EventRequest extends FormRequest
     {
         return [
             'event_title' => 'required|max:20|min:5',
-            'excerpt' => 'nullable|min:10|string',
             'location' => 'required',
             'event_start' => 'required',
             'start_time' => 'required',
