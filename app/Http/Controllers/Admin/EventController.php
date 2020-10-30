@@ -42,7 +42,7 @@ class EventController extends Controller
     {
         $attr = $request->all();
 
-        $attr['slug'] = Str::slug(request('event_title')). '-' . dechex(time());
+        $attr['slug'] = Str::slug(request('event_title')) . '-' . dechex(time());
         $attr['meta_title'] = request('event_title');
         $attr['meta_description'] = Str::limit(strip_tags(request('description')), 139);
 
@@ -50,7 +50,7 @@ class EventController extends Controller
         $filename = $thumbnail->getClientOriginalName();
         $thumbnailName = safe_file_name(pathinfo($filename, PATHINFO_FILENAME)) . '-' . uniqid() . '.' . $thumbnail->getClientOriginalExtension();
         if ($thumbnail) {
-            $thumbnailUrl = $thumbnail->storeAs("event/thumbnails", $thumbnailName);
+            $thumbnailUrl = $thumbnail->storeAs('event/thumbnails', $thumbnailName);
         } else {
             $thumbnailUrl = null;
         }
@@ -89,7 +89,7 @@ class EventController extends Controller
         $thumbnailName = safe_file_name(pathinfo($filename, PATHINFO_FILENAME)) . '-' . uniqid() . '.' . $thumbnail->getClientOriginalExtension();
         if ($thumbnail) {
             \Storage::delete($event->thumbnail);
-            $thumbnailUrl = $thumbnail->storeAs("event/thumbnails", $thumbnailName);
+            $thumbnailUrl = $thumbnail->storeAs('event/thumbnails', $thumbnailName);
         } else {
             $thumbnailUrl = $hidden_thumbnail;
         }
