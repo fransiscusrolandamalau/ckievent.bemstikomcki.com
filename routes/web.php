@@ -3,6 +3,9 @@
 Route::group(['prefix' => 'auth', 'namespace' => 'Admin'], function () {
     Auth::routes(['register' => false]);
 });
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+});
 Route::group(['prefix' => 'a', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
     Route::get('/dashboard', 'BaseController@dashboard')->name('dashboard');
     Route::resource('events', 'EventController');

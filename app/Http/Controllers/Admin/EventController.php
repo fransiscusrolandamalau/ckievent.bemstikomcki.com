@@ -8,6 +8,7 @@ use App\Traits\UploadTrait;
 use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\EventRequest;
+use App\Models\Category;
 use App\Models\Event;
 
 class EventController extends Controller
@@ -35,9 +36,11 @@ class EventController extends Controller
 
     public function create()
     {
-        $tags = Tag::all();
-
-        return view('admin.pages.events.create', compact('tags'));
+        return view('admin.pages.events.create', [
+            'events' => new Event(),
+            'categories' => Category::get(),
+            'tags' => Tag::get(),
+        ]);
     }
 
     public function store(EventRequest $request)

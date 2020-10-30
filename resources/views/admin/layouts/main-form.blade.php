@@ -7,11 +7,15 @@
 @endsection
 @push('js')
     <script src="{{ mix('/admin/js/forms.js') }}"></script>
-    <script  type="text/javascript">
+    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+    <script src="{{ mix('/admin/js/tinymce-filemanager.js') }}"></script>
+
+    <script type="text/javascript">
         $(document).ready(function () {
             $('.select2').select2();
         });
     </script>
+
     <script type="text/javascript">
         $(function () {
             $('.timepicker').datetimepicker({
@@ -23,6 +27,7 @@
             });
         });
     </script>
+
     <script type="text/javascript">
         $("#status").change(function() {
         if ($(this).val() == "umum") {
