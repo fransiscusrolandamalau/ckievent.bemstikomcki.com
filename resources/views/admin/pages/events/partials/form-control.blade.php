@@ -1,9 +1,9 @@
 <div class="row">
-
-    <div class="col-xs-12 col-sm-12 col-md-12">
+   <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group @if($errors->has('thumbnail')) has-error @endif">
-            <img class="img-thumbnail" width="150px" style="object-fit: cover; object-position: center;" src="{{ $events->takeImage }}"><br>
-            {{ Form::hidden('hidden_thumbnail', $events->takeImage) }}
+            @isset($events->thumbnail)
+            {!! Html::image('/storage/' . $events->thumbnail, null, ['class'=>'img-thumbnail', 'width' => '150px', 'style' => 'object-fit: cover; object-position: center;']) !!} <br>
+            @endisset
             {!! Form::label('thumbnail', 'Upload pictures / posters / banners', ['class' => 'form-control-label']) !!}
             {!! Form::file('thumbnail', ['class' => 'form-control', 'id' => 'thumbnail']) !!}
             <h6 class="text-danger">Recommended 724 x 340px and no more than 2Mb</h6>
@@ -192,6 +192,5 @@
             </div>
         </div>
     @endrole
-
 </div>
 {!! Form::submit($submit ?? 'Update', ['class' => 'btn btn-primary btn-block']) !!}

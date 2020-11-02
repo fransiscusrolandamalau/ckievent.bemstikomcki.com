@@ -25,4 +25,4 @@ $ php artisan migrate
 
 ## License
 
-Source code is available under [MIT License](./LICENSE.md)  
+Source code is available under [Apache-2.0 License](./LICENSE.md)  

@@ -58,7 +58,7 @@ class EventController extends Controller
         $attr['category_id'] = request('category');
         $attr['thumbnail'] = $thumbnailUrl;
 
-        auth()->user()->event()->create($attr);
+        Auth::user()->event()->create($attr);
 
         return redirect()->route('events.index')
             ->with('success', 'Event has been created successfully');
@@ -83,7 +83,6 @@ class EventController extends Controller
     {
         $attr = $request->all();
 
-        $hidden_thumbnail = request('hidden_thumbnail');
         $thumbnail = request()->file('thumbnail');
         $filename = $thumbnail->getClientOriginalName();
         $thumbnailName = safe_file_name(pathinfo($filename, PATHINFO_FILENAME)) . '-' . uniqid() . '.' . $thumbnail->getClientOriginalExtension();
@@ -91,7 +90,7 @@ class EventController extends Controller
             \Storage::delete($event->thumbnail);
             $thumbnailUrl = $thumbnail->storeAs('event/thumbnails', $thumbnailName);
         } else {
-            $thumbnailUrl = $hidden_thumbnail;
+            $thumbnailUrl = $thumbnail;
         }
 
         $attr['category_id'] = request('category');
