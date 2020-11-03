@@ -12,7 +12,8 @@ Route::group(['prefix' => 'a', 'namespace' => 'Admin', 'middleware' => ['auth']]
     Route::resource('users', 'UserController');
     Route::resource('roles', 'RoleController');
     Route::resource('profiles', 'ProfileController');
-    Route::resource('tags', 'TagController');
+    Route::resource('categories', 'CategoryController');
+    Route::get('/categories/list_data', 'CategoryController@list_data')->name('categories.list');
     Route::resource('registrations', 'RegistrationController');
     Route::get('/gallery', 'GalleryController@index');
     Route::get('/gallery/create', 'GalleryController@create');

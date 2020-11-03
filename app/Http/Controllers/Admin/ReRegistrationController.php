@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use Auth;
-use App\Traits\UploadTrait;
 use Illuminate\Support\Str;
 use App\Models\Registration;
 use Illuminate\Http\Request;
@@ -11,8 +10,6 @@ use App\Http\Controllers\Controller;
 
 class ReRegistrationController extends Controller
 {
-    use UploadTrait;
-
     public function index()
     {
         $registrations = Registration::where('email', '=', Auth::user()->email)->get();

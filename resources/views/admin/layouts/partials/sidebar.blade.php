@@ -40,6 +40,12 @@
                                         </a>
                                     </li>
                                     <li class="nav-item">
+                                        <a href="{{ route('categories.index') }}" class="nav-link{{ request()->is('a/categories*') ? ' active' : '' }}">
+                                            <span class="sidenav-mini-icon"> C </span>
+                                            <span class="sidenav-normal"> Category </span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
                                         <a href="{{ route('registrations.index') }}" class="nav-link{{ request()->is('a/registrations*') ? ' active' : '' }}">
                                             <span class="sidenav-mini-icon"> RD </span>
                                             <span class="sidenav-normal"> Registration Data </span>
