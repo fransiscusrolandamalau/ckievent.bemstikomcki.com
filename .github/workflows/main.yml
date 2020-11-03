@@ -1,4 +1,4 @@
-name: Continuous Integration CKI Event
+name: Tests
 on:
   push:
     branches:
