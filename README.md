@@ -1,5 +1,19 @@
 # ckievent.bemstikomcki.com
 
+<a href="https://github.com/fransiscusrolandamalau/ckievent.bemstikomcki.com/actions?query=workflow%3ATests">
+    <img src="https://github.com/fransiscusrolandamalau/ckievent.bemstikomcki.com/workflows/Tests/badge.svg" alt="Tests">
+</a>
+
+Visit it at [https://ckievent.bemstikomcki.com](https://ckievent.bemstikomcki.com)
+
+## Requirements
+
+The following tools are required in order to start the installation.
+
+- PHP >=7.4
+- [Composer](https://getcomposer.org/download/)
+- [NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+
 ## What next?
 After clone or download this repository, next step is install all dependency required by laravel and laravel-mix.
 
