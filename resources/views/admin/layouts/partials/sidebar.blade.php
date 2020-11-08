@@ -63,11 +63,11 @@
                     @endhasanyrole
                     @role('Super Admin')
                         <li class="nav-item">
-                            <a class="nav-link{{ request()->is('a/users*', 'a/roles*') ? ' active' : '' }}" href="#user_management" data-toggle="collapse" role="button" aria-expanded="{{ request()->is('a/users*', 'a/roles*') ? 'true' : 'false' }}" aria-controls="user_management">
+                            <a class="nav-link{{ request()->is('a/users*', 'a/roles*', 'a/permissions*') ? ' active' : '' }}" href="#user_management" data-toggle="collapse" role="button" aria-expanded="{{ request()->is('a/users*', 'a/roles*') ? 'true' : 'false' }}" aria-controls="user_management">
                                 <i class="ni ni-settings "></i>
                                 <span class="nav-link-text">Users Management</span>
                             </a>
-                            <div class="collapse{{ request()->is('a/users*', 'a/roles*') ? ' show' : '' }}" id="user_management">
+                            <div class="collapse{{ request()->is('a/users*', 'a/roles*', 'a/permissions*') ? ' show' : '' }}" id="user_management">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
                                         <a href="{{ route('users.index') }}" class="nav-link">
@@ -79,6 +79,12 @@
                                         <a href="{{ route('roles.index') }}" class="nav-link">
                                             <span class="sidenav-mini-icon"> R </span>
                                             <span class="sidenav-normal"> Roles </span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('permissions.index') }}" class="nav-link">
+                                            <span class="sidenav-mini-icon"> P </span>
+                                            <span class="sidenav-normal"> Permissions </span>
                                         </a>
                                     </li>
                                 </ul>

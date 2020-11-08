@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['prefix' => 'auth', 'namespace' => 'Admin'], function () {
+Route::group(['prefix' => 'auth'], function () {
     Auth::routes(['register' => false]);
 });
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
@@ -11,6 +11,7 @@ Route::group(['prefix' => 'a', 'namespace' => 'Admin', 'middleware' => ['auth']]
     Route::resource('events', 'EventController');
     Route::resource('users', 'UserController');
     Route::resource('roles', 'RoleController');
+    Route::resource('permissions', 'PermissionController');
     Route::resource('profiles', 'ProfileController');
     Route::resource('categories', 'CategoryController');
     Route::get('/categories/list_data', 'CategoryController@list_data')->name('categories.list');
