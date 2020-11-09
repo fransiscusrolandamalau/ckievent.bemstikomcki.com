@@ -8,6 +8,7 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']
 });
 Route::group(['prefix' => 'a', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
     Route::get('/dashboard', 'BaseController@dashboard')->name('dashboard');
+    Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
     Route::resource('events', 'EventController');
     Route::resource('users', 'UserController');
     Route::resource('roles', 'RoleController');

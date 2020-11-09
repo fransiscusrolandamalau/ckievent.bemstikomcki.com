@@ -15,26 +15,30 @@ class CreateEventsTable extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
-            $table->string('event_title', 191);
-            $table->string('slug', 191)->unique();
-            $table->string('location', 100);
-            $table->date('event_start')->nullable();
-            $table->time('start_time')->nullable();
-            $table->date('event_ends')->nullable();
-            $table->time('end_time')->nullable();
-            $table->string('thumbnail')->nullable();
-            $table->text('description');
-            $table->text('terms_and_conditions')->nullable();
-            $table->string('contact_person', 50)->nullable();
-            $table->boolean('payment_status')->default(false);
-            $table->boolean('event_status')->default(false);
-            $table->string('path_to', 150)->nullable();
-            $table->boolean('is_published')->default(false);
-            $table->boolean('featured')->default(false);
-            $table->string('meta_title')->nullable();
-            $table->string('meta_description')->nullable();
+            $table->text('banner')->nullable();
+            $table->string('nama_event');
+            $table->string('slug')->unique();
             $table->unsignedBigInteger('category_id')->nullable();
             $table->foreignId('user_id');
+            $table->date('tanggal_mulai')->nullable();
+            $table->date('tanggal_berakhir')->nullable();
+            $table->time('mulai_jam')->nullable();
+            $table->time('selesai_jam')->nullable();
+            $table->enum('lokasi', ['Online', 'Offline']);
+            $table->string('nama_tempat')->nullable();
+            $table->string('url_maps')->nullable();
+            $table->string('url_streaming');
+            $table->enum('kategori_tiket', ['Berbayar', 'Gratis']);
+            $table->string('nama_tiket')->nullable();
+            $table->string('jumlah_tiket')->nullable();
+            $table->string('harga')->nullable();
+            $table->date('tanggal_mulai_penjualan')->nullable();
+            $table->date('tanggal_berakhir_penjualan')->nullable();
+            $table->time('mulai_jam_penjualan')->nullable();
+            $table->time('selesai_jam_penjualan')->nullable();
+            $table->text('deskripsi_event');
+            $table->text('syarat_ketentuan')->nullable();
+            $table->boolean('featured')->default(false);
             $table->timestamps();
         });
     }
