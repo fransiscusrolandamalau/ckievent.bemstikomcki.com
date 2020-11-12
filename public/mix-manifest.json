@@ -1,4 +1,6 @@
 {
+    "/auth/js/app.js": "/auth/js/app.js",
+    "/auth/css/app.css": "/auth/css/app.css",
     "/admin/js/tinymce-filemanager.js": "/admin/js/tinymce-filemanager.js",
     "/admin/css/admin.css": "/admin/css/admin.css",
     "/admin/css/vendor.css": "/admin/css/vendor.css",

@@ -1,42 +1,42 @@
 <div class="row">
    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group @if($errors->has('thumbnail')) has-error @endif">
-            @isset($events->thumbnail)
-            {!! Html::image('/storage/' . $events->thumbnail, null, ['class'=>'img-thumbnail', 'width' => '150px', 'style' => 'object-fit: cover; object-position: center;']) !!} <br>
+        <div class="form-group @if($errors->has('banner')) has-error @endif">
+            @isset($events->banner)
+            {!! Html::image('/storage/' . $events->banner, null, ['class'=>'img-banner', 'width' => '150px', 'style' => 'object-fit: cover; object-position: center;']) !!} <br>
             @endisset
-            {!! Form::label('thumbnail', 'Upload pictures / posters / banners', ['class' => 'form-control-label']) !!}
-            {!! Form::file('thumbnail', ['class' => 'form-control', 'id' => 'thumbnail']) !!}
+            {!! Form::label('banner', 'Upload pictures / posters / banners', ['class' => 'form-control-label']) !!}
+            {!! Form::file('banner', ['class' => 'form-control', 'id' => 'banner']) !!}
             <h6 class="text-danger">Recommended 724 x 340px and no more than 2Mb</h6>
-            @if ($errors->has('thumbnail'))
-                <span class="text-danger">{!! $errors->first('thumbnail') !!}</span>
+            @if ($errors->has('banner'))
+                <span class="text-danger">{!! $errors->first('banner') !!}</span>
             @endif
         </div>
     </div>
 
     <div class="col-xs-5 col-sm-5 col-md-5">
-        <div class="form-group @if($errors->has('event_title')) has-error @endif">
+        <div class="form-group @if($errors->has('nama_event')) has-error @endif">
             <div class="input-group input-group-merge">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-tags"></i></span>
                 </div>
-                {!! Form::text('event_title', null, ['class' => 'form-control', 'placeholder' => 'Event Name *']) !!}
+                {!! Form::text('nama_event', null, ['class' => 'form-control', 'placeholder' => 'Event Name *']) !!}
             </div>
-            @if ($errors->has('event_title'))
-                <span class="text-danger">{!! $errors->first('event_title') !!}</span>
+            @if ($errors->has('nama_event'))
+                <span class="text-danger">{!! $errors->first('nama_event') !!}</span>
             @endif
         </div>
     </div>
 
     <div class="col-xs-3 col-sm-3 col-md-3">
-        <div class="form-group @if($errors->has('event_title')) has-error @endif">
+        <div class="form-group @if($errors->has('category')) has-error @endif">
             <select name="category" id="category" class="form-control @error('category') is-invalid @enderror">
                 <option disabled selected>Choose Category *</option>
                 @foreach ($categories as $category)
                     <option {{ $category->id == $events->category_id ? 'selected' : '' }} value="{{ $category->id }}">{{ $category->name }}</option>
                 @endforeach
             </select>
-            @if ($errors->has('event_title'))
-                <span class="text-danger">{!! $errors->first('event_title') !!}</span>
+            @if ($errors->has('category'))
+                <span class="text-danger">{!! $errors->first('category') !!}</span>
             @endif
         </div>
     </div>
@@ -57,53 +57,12 @@
     </div>
 
     <div class="col-xs-3 col-sm-3 col-md-3">
-        <div class="form-group @if($errors->has('event_start')) has-error @endif">
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
-                </div>
-                {!! Form::text('event_start', null, ['class' => 'form-control datepicker', 'data-date-format' => 'yyyy-mm-dd', 'placeholder' => 'Start Date *']) !!}
-            </div>
-            @if ($errors->has('event_start'))
-                <span class="text-danger">{!! $errors->first('event_start') !!}</span>
-            @endif
-        </div>
-    </div>
-
-    <div class="col-xs-3 col-sm-3 col-md-3">
-        <div class="form-group @if($errors->has('start_time')) has-error @endif">
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fa fa-clock"></i></span>
-                </div>
-                {!! Form::text('start_time', null, ['class' => 'form-control timepicker', 'placeholder' => 'Starting Time *']) !!}
-            </div>
-            @if ($errors->has('start_time'))
-                <span class="text-danger">{!! $errors->first('start_time') !!}</span>
-            @endif
-        </div>
-    </div>
-
-    <div class="col-xs-3 col-sm-3 col-md-3">
-        <div class="form-group @if($errors->has('event_ends')) has-error @endif">
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
-                </div>
-                {!! Form::text('event_ends', null, ['class' => 'form-control datepicker', 'data-date-format' => 'yyyy-mm-dd', 'placeholder' => 'End Date *']) !!}
-            </div>
-            @if ($errors->has('event_ends'))
-                <span class="text-danger">{!! $errors->first('event_ends') !!}</span>
-            @endif
-        </div>
-    </div>
-
-    <div class="col-xs-3 col-sm-3 col-md-3">
         <div class="form-group @if($errors->has('end_time')) has-error @endif">
             <div class="input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-clock"></i></span>
                 </div>
+                {!! Form::text('end_time', null, ['class' => 'form-control timepicker', 'data-time-format' => 'H:i:s', 'placeholder' => 'End Time *']) !!}
                 {!! Form::text('end_time', null, ['class' => 'form-control timepicker', 'data-time-format' => 'H:i:s', 'placeholder' => 'End Time *']) !!}
             </div>
             @if ($errors->has('end_time'))
@@ -194,3 +153,82 @@
     @endrole
 </div>
 {!! Form::submit($submit ?? 'Update', ['class' => 'btn btn-primary btn-block']) !!}
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Launch demo modal
+  </button>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="col-md-12">
+                <div class="form-group @if($errors->has('event_start')) has-error @endif">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                        </div>
+                        {!! Form::text('event_start', null, ['class' => 'form-control datepicker', 'data-date-format' => 'yyyy-mm-dd', 'placeholder' => 'Start Date *']) !!}
+                    </div>
+                    @if ($errors->has('event_start'))
+                        <span class="text-danger">{!! $errors->first('event_start') !!}</span>
+                    @endif
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-group @if($errors->has('start_time')) has-error @endif">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-clock"></i></span>
+                        </div>
+                        {!! Form::text('start_time', null, ['class' => 'form-control timepicker', 'placeholder' => 'Starting Time *']) !!}
+                    </div>
+                    @if ($errors->has('start_time'))
+                        <span class="text-danger">{!! $errors->first('start_time') !!}</span>
+                    @endif
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-group @if($errors->has('event_ends')) has-error @endif">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                        </div>
+                        {!! Form::text('event_ends', null, ['class' => 'form-control datepicker', 'data-date-format' => 'yyyy-mm-dd', 'placeholder' => 'End Date *']) !!}
+                    </div>
+                    @if ($errors->has('event_ends'))
+                        <span class="text-danger">{!! $errors->first('event_ends') !!}</span>
+                    @endif
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-group @if($errors->has('end_time')) has-error @endif">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-clock"></i></span>
+                        </div>
+                        {!! Form::text('end_time', null, ['class' => 'form-control timepicker', 'data-time-format' => 'H:i:s', 'placeholder' => 'End Time *']) !!}
+                    </div>
+                    @if ($errors->has('end_time'))
+                        <span class="text-danger">{!! $errors->first('end_time') !!}</span>
+                    @endif
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,6 +1,22 @@
 const mix = require("laravel-mix");
 require('laravel-mix-purgecss');
 
+/*
+ |--------------------------------------------------------------------------
+ | Mix Asset Management
+ |--------------------------------------------------------------------------
+ |
+ | Mix provides a clean, fluent API for defining some Webpack build steps
+ | for your Laravel applications. By default, we are compiling the CSS
+ | file for the application as well as bundling up all the JS files.
+ |
+ */
+
+mix.js('resources/assets/auth/js/app.js', 'public/auth/js').postCss('resources/assets/auth/css/app.css', 'public/auth/css', [
+    require('postcss-import'),
+    require('tailwindcss'),
+]);
+
 mix.copyDirectory("resources/assets/admin/fonts", "public/admin/fonts");
 mix.copyDirectory("resources/assets/admin/vendor/@fortawesome/fontawesome-free/webfonts", "public/admin/webfonts");
 mix.copy('resources/assets/admin/vendor/tinymce-filemanager.js', 'public/admin/js/tinymce-filemanager.js');

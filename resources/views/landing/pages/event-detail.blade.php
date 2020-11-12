@@ -83,14 +83,14 @@
             @endforeach
         </div>
     </section> --}}
-    <section class="section">
+    {{-- <section class="section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-5 col-md-5 col-12">
                     <div class="job-profile position-relative">
                         <div class="rounded shadow bg-white">
                             <div class="text-center">
-                                <img src="{{ asset('thumbnail/'.$posts->thumbnail) }}" width="445px" alt="">
+                                <img src="{{ asset('thumbnail/'.$events->thumbnail) }}" width="445px" alt="">
                             </div>
 
                             <div class="p-4">
@@ -98,33 +98,33 @@
                                 <ul class="list-unstyled mb-4">
                                     <li class="h6">
                                         <i data-feather="calendar" class="fea icon-sm text-warning mr-2"></i>
-                                        <span class="text-muted">Start Date :</span> {{ Carbon\Carbon::parse($posts->event_start)->isoFormat('dddd, D MMM, Y') }}
+                                        <span class="text-muted">Start Date :</span> {{ Carbon\Carbon::parse($events->event_start)->isoFormat('dddd, D MMM, Y') }}
                                     </li>
                                     <li class="h6">
                                         <i data-feather="clock" class="fea icon-sm text-warning mr-2"></i>
-                                        <span class="text-muted">Time :</span> {{ Carbon\Carbon::parse($posts->start_time)->format('H:i') . " - " . $posts->end_time }} WIB
+                                        <span class="text-muted">Time :</span> {{ Carbon\Carbon::parse($events->start_time)->format('H:i') . " - " . $events->end_time }} WIB
                                     </li>
-                                    @if ($posts->event_start != $posts->event_ends)
+                                    @if ($events->event_start != $events->event_ends)
                                         <li class="h6">
                                             <i data-feather="calendar" class="fea icon-sm text-warning mr-2"></i>
-                                            <span class="text-muted">End Date :</span> {{ Carbon\Carbon::parse($posts->event_ends)->isoFormat('dddd, D MMM, Y') }}
+                                            <span class="text-muted">End Date :</span> {{ Carbon\Carbon::parse($events->event_ends)->isoFormat('dddd, D MMM, Y') }}
                                         </li>
                                     @endif
                                     <li class="h6">
                                         <i data-feather="phone" class="fea icon-sm text-warning mr-2"></i>
-                                        <span class="text-muted">Contact Person :</span> {{ $posts->contact }}
+                                        <span class="text-muted">Contact Person :</span> {{ $events->contact }}
                                     </li>
                                     <li class="h6">
                                         <i data-feather="map-pin" class="fea icon-sm text-warning mr-2"></i>
-                                        <span class="text-muted">Location :</span> {{ $posts->location }}
+                                        <span class="text-muted">Location :</span> {{ $events->location }}
                                     </li>
                                     <li class="h6">
                                         <i data-feather="shopping-cart" class="fea icon-sm text-warning mr-2"></i>
-                                        <span class="text-muted">Payment Status :</span> {{ $posts->payment_status == 1 ? 'Paid' : 'Free' }}
+                                        <span class="text-muted">Payment Status :</span> {{ $events->payment_status == 1 ? 'Paid' : 'Free' }}
                                     </li>
                                     <li class="h6">
                                         <i data-feather="meh" class="fea icon-sm text-warning mr-2"></i>
-                                        <span class="text-muted">Presented by :</span> {{ $posts->author->name }}
+                                        <span class="text-muted">Presented by :</span> {{ $events->author->name }}
                                     </li>
                                 </ul>
                                 <a href="javascipt:void(0)" data-toggle="modal" data-target="#ApplyNow" class="btn btn-block btn-success">Register</a>
@@ -136,7 +136,7 @@
                 <div class="col-lg-7 col-md-7 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
                     <div class="ml-md-4">
                         <h4>About this Event</h4>
-                        {!! nl2br($posts->content) !!}
+                        {!! nl2br($events->content) !!}
                         <h4 class="mt-lg-5 mt-4">Share With Friends</h4>
                         <ul class="list-unstyled social-icon mb-0 mt-4">
                             <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="facebook" class="fea icon-sm fea-social"></i></a></li>
@@ -151,5 +151,5 @@
                 </div><!--end col-->
             </div><!--end row-->
         </div><!--end container-->
-    </section><!--end section-->
+    </section><!--end section--> --}}
 @endsection

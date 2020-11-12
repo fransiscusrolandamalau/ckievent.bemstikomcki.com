@@ -231,10 +231,6 @@
                 background-color: #fff;
             }
 
-            .bg-info {
-                background-color: #11cdef;
-            }
-
             .bg-teal-light {
                 background-color: #64d5ca;
             }
@@ -461,14 +457,14 @@
         </style>
     </head>
     <body class="antialiased font-sans">
-        <div class="md:flex min-h-screen bg-info">
-            <div class="w-full md:w-1/2 bg-info flex items-center justify-center">
+        <div class="md:flex min-h-screen">
+            <div class="w-full md:w-1/2 bg-white flex items-center justify-center">
                 <div class="max-w-sm m-8">
                     <div class="text-black text-5xl md:text-15xl font-black">
                         @yield('code', __('Oh no'))
                     </div>
 
-                    <div class="w-16 h-1 bg-white my-3 md:my-6"></div>
+                    <div class="w-16 h-1 bg-purple-light my-3 md:my-6"></div>
 
                     <p class="text-grey-darker text-2xl md:text-3xl font-light mb-8 leading-normal">
                         @yield('message')

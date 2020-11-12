@@ -17,14 +17,14 @@ class BaseController extends Controller
     public function home()
     {
         return view('landing.pages.home', [
-            'events' => Event::where('is_published', true)->orderBy('created_at', 'DESC')->paginate(6),
-            'popular_events' => Event::where('is_published', true)->orderBy('created_at', 'DESC')->limit(3)->get(),
+            'events' => Event::orderBy('created_at', 'DESC')->paginate(6),
+            'popular_events' => Event::orderBy('created_at', 'DESC')->limit(3)->get(),
         ]);
     }
 
     public function eventDetail($slug)
     {
-        $events = Event::where('slug', $slug)->where('is_published', 1)->first();
+        $events = Event::where('slug', $slug)->first();
 
         return view('landing.pages.event-detail', compact('events'));
     }
