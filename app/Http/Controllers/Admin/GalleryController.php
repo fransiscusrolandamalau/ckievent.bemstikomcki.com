@@ -6,6 +6,7 @@ use Response;
 use App\Models\Gallery;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 
 class GalleryController extends Controller
@@ -33,17 +34,17 @@ class GalleryController extends Controller
     {
         $photos = $request->file('file');
 
-        if (! is_array($photos)) {
+        if (!is_array($photos)) {
             $photos = [$photos];
         }
-        if (! is_dir($this->photo_path)) {
+        if (!is_dir($this->photo_path)) {
             mkdir($this->photo_path, 0777);
         }
         for ($i = 0; $i < count($photos); $i++) {
             $photo = $photos[$i];
-            $name = sha1(date('YmdHis') . str_random(30));
+            $name = sha1(date('YmdHis') . Str::random(30));
             $save_name = $name . '.' . $photo->getClientOriginalExtension();
-            $resize_name = $name . str_random(2) . '.' . $photo->getClientOriginalExtension();
+            $resize_name = $name . Str::random(2) . '.' . $photo->getClientOriginalExtension();
 
             Image::make($photo)->resize(250, null, function ($constraints) {
                 $constraints->aspectRatio();
@@ -96,7 +97,7 @@ class GalleryController extends Controller
             unlink($resized_file);
         }
 
-        if (! empty($uploaded_image)) {
+        if (!empty($uploaded_image)) {
             $uploaded_image->delete();
         }
 
