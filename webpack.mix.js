@@ -98,7 +98,6 @@ mix.scripts(
     "public/admin/js/vendor-datatables.js"
 );
 
-// Frontend
 mix.copyDirectory("resources/assets/landing/fonts", "public/landing/fonts");
 
 mix.styles(
