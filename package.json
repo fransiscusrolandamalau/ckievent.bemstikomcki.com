@@ -26,7 +26,6 @@
         "tailwindcss": "^1.8.0",
         "vue-template-compiler": "^2.6.12"
     },
-    "dependencies": [],
     "husky": {
         "hooks": {
             "pre-commit": "lint-staged"
