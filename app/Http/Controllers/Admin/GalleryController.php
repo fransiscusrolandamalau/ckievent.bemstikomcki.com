@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use Response;
 use App\Models\Gallery;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 
 class GalleryController extends Controller
@@ -34,10 +34,10 @@ class GalleryController extends Controller
     {
         $photos = $request->file('file');
 
-        if (!is_array($photos)) {
+        if (! is_array($photos)) {
             $photos = [$photos];
         }
-        if (!is_dir($this->photo_path)) {
+        if (! is_dir($this->photo_path)) {
             mkdir($this->photo_path, 0777);
         }
         for ($i = 0; $i < count($photos); $i++) {
@@ -97,7 +97,7 @@ class GalleryController extends Controller
             unlink($resized_file);
         }
 
-        if (!empty($uploaded_image)) {
+        if (! empty($uploaded_image)) {
             $uploaded_image->delete();
         }
 

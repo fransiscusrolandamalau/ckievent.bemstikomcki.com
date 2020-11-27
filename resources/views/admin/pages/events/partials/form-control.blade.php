@@ -42,16 +42,58 @@
     </div>
 
     <div class="col-xs-4 col-sm-4 col-md-4">
-        <div class="form-group @if($errors->has('location')) has-error @endif">
+        <div class="form-group @if($errors->has('lokasi')) has-error @endif">
             <div class="input-group input-group-merge">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-map-marker"></i></span>
                 </div>
-                {!! Form::text('location', null, ['class' => 'form-control', 'placeholder' => 'Location *']) !!}
+                {!! Form::text('lokasi', null, ['class' => 'form-control', 'placeholder' => 'Location *']) !!}
             </div>
             <h6 class="text-danger">Please input your location: Event Online or Google maps link</h6>
-            @if ($errors->has('location'))
-                <span class="text-danger">{!! $errors->first('location') !!}</span>
+            @if ($errors->has('lokasi'))
+                <span class="text-danger">{!! $errors->first('lokasi') !!}</span>
+            @endif
+        </div>
+    </div>
+
+    <div class="col-xs-3 col-sm-3 col-md-3">
+        <div class="form-group @if($errors->has('tanggal_mulai')) has-error @endif">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                </div>
+                {!! Form::text('tanggal_mulai', null, ['class' => 'form-control datepicker', 'data-date-format' => 'yyyy-mm-dd', 'placeholder' => 'Tanggal Mulai *']) !!}
+            </div>
+            @if ($errors->has('tanggal_mulai'))
+                <span class="text-danger">{!! $errors->first('tanggal_mulai') !!}</span>
+            @endif
+        </div>
+    </div>
+
+    <div class="col-xs-3 col-sm-3 col-md-3">
+        <div class="form-group @if($errors->has('mulai_jam')) has-error @endif">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-clock"></i></span>
+                </div>
+                {!! Form::text('mulai_jam', null, ['class' => 'form-control timepicker', 'placeholder' => 'Starting Time *']) !!}
+            </div>
+            @if ($errors->has('mulai_jam'))
+                <span class="text-danger">{!! $errors->first('mulai_jam') !!}</span>
+            @endif
+        </div>
+    </div>
+
+    <div class="col-xs-3 col-sm-3 col-md-3">
+        <div class="form-group @if($errors->has('tanggal_berakhir')) has-error @endif">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                </div>
+                {!! Form::text('tanggal_berakhir', null, ['class' => 'form-control datepicker', 'data-date-format' => 'yyyy-mm-dd', 'placeholder' => 'End Date *']) !!}
+            </div>
+            @if ($errors->has('tanggal_berakhir'))
+                <span class="text-danger">{!! $errors->first('tanggal_berakhir') !!}</span>
             @endif
         </div>
     </div>
@@ -62,7 +104,6 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-clock"></i></span>
                 </div>
-                {!! Form::text('end_time', null, ['class' => 'form-control timepicker', 'data-time-format' => 'H:i:s', 'placeholder' => 'End Time *']) !!}
                 {!! Form::text('end_time', null, ['class' => 'form-control timepicker', 'data-time-format' => 'H:i:s', 'placeholder' => 'End Time *']) !!}
             </div>
             @if ($errors->has('end_time'))
@@ -153,82 +194,3 @@
     @endrole
 </div>
 {!! Form::submit($submit ?? 'Update', ['class' => 'btn btn-primary btn-block']) !!}
-
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-    Launch demo modal
-  </button>
-
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-            <div class="col-md-12">
-                <div class="form-group @if($errors->has('event_start')) has-error @endif">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
-                        </div>
-                        {!! Form::text('event_start', null, ['class' => 'form-control datepicker', 'data-date-format' => 'yyyy-mm-dd', 'placeholder' => 'Start Date *']) !!}
-                    </div>
-                    @if ($errors->has('event_start'))
-                        <span class="text-danger">{!! $errors->first('event_start') !!}</span>
-                    @endif
-                </div>
-            </div>
-
-            <div class="col-md-12">
-                <div class="form-group @if($errors->has('start_time')) has-error @endif">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fa fa-clock"></i></span>
-                        </div>
-                        {!! Form::text('start_time', null, ['class' => 'form-control timepicker', 'placeholder' => 'Starting Time *']) !!}
-                    </div>
-                    @if ($errors->has('start_time'))
-                        <span class="text-danger">{!! $errors->first('start_time') !!}</span>
-                    @endif
-                </div>
-            </div>
-
-            <div class="col-md-12">
-                <div class="form-group @if($errors->has('event_ends')) has-error @endif">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
-                        </div>
-                        {!! Form::text('event_ends', null, ['class' => 'form-control datepicker', 'data-date-format' => 'yyyy-mm-dd', 'placeholder' => 'End Date *']) !!}
-                    </div>
-                    @if ($errors->has('event_ends'))
-                        <span class="text-danger">{!! $errors->first('event_ends') !!}</span>
-                    @endif
-                </div>
-            </div>
-
-            <div class="col-md-12">
-                <div class="form-group @if($errors->has('end_time')) has-error @endif">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fa fa-clock"></i></span>
-                        </div>
-                        {!! Form::text('end_time', null, ['class' => 'form-control timepicker', 'data-time-format' => 'H:i:s', 'placeholder' => 'End Time *']) !!}
-                    </div>
-                    @if ($errors->has('end_time'))
-                        <span class="text-danger">{!! $errors->first('end_time') !!}</span>
-                    @endif
-                </div>
-            </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>

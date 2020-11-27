@@ -31,4 +31,4 @@ Route::group(['namespace' => 'Landing'], function () {
     Route::post('/registration', 'BaseController@eventRegistrationPost')->name('event-registration.store');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
